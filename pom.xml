@@ -11,6 +11,7 @@
   <modules>
     <module>chy-kafka</module>
     <module>chy-generate-pdf</module>
+    <module>generate-code</module>
   </modules>
 
   <name>spring-boot-chy</name>

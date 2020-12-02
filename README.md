@@ -8,3 +8,7 @@ https://www.cnblogs.com/chywx/p/13785529.html
 
 ## kafka
 整合kafka
+
+
+## generate code
+mybatis逆向工程
