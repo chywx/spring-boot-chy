@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>chy-kafka</module>
+    <module>chy-generate-pdf</module>
   </modules>
 
   <name>spring-boot-chy</name>
