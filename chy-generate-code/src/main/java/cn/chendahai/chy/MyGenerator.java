@@ -20,7 +20,7 @@ public class MyGenerator {
     /**
      * db
      */
-    private static String url = "jdbc:mysql://localhost:3306/" + table + "?serverTimezone=CTT";
+    private static String url = "jdbc:mysql://inner-mysql.gbank.club:3306/" + table + "?serverTimezone=CTT";
     private static String user = "root";
     private static String password = "gbankclub";
     private static String dirverName = "com.mysql.cj.jdbc.Driver";

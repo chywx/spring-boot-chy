@@ -11,7 +11,7 @@
   <modules>
     <module>chy-kafka</module>
     <module>chy-generate-pdf</module>
-    <module>generate-code</module>
+    <module>chy-generate-code</module>
     <module>chy-rocketmq</module>
   </modules>
 
