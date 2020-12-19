@@ -1,6 +1,6 @@
 # spring-boot-chy
 spring boot 各种demo模板
-点滴记录下，方便以后学习
+点滴记录，方便日后学习
 
 
 ## generate pdf
@@ -13,3 +13,9 @@ https://www.cnblogs.com/chywx/p/13785529.html
 
 ## generate code
 mybatis逆向工程
+
+## screw
+生成数据库表结构文档，支持HTML WORD MARKDOWN
+
+## generate pdf
+根据HTML生成pdf，比如生成合同等
