@@ -13,6 +13,7 @@
     <module>chy-generate-pdf</module>
     <module>chy-generate-code</module>
     <module>chy-rocketmq</module>
+    <module>chy-screw</module>
   </modules>
 
   <name>spring-boot-chy</name>
