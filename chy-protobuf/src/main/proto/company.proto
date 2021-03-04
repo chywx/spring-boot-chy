@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.dahai.protobuf";
+option java_outer_classname = "SchoolModel";
+
+
+message School {
+  int32 id = 1;
+  repeated Student list = 2;
+}
+
+message Student {
+  int32 id = 1;
+  int32 age = 2;
+  string name = 3;
+}

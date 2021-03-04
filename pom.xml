@@ -14,6 +14,7 @@
     <module>chy-generate-code</module>
     <module>chy-rocketmq</module>
     <module>chy-screw</module>
+    <module>chy-protobuf</module>
   </modules>
 
   <name>spring-boot-chy</name>
