@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>protobuf demo</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!--    <script src="../js/protobuf/person.js"></script>-->
+    <!--    <script src="../js/protobuf.js"></script>-->
+
+</head>
+<body>
+
+<h1>hello</h1>
+<script>
+
+    $(function () {
+        // console.log(protobuf)
+
+        $.ajax({
+            url: "http://localhost:8881/demo/person/1",
+            responseType: 'blob',
+            success: function (res) {
+                console.log(res)
+
+                // let _data = person.decode(new Uint8Array(res.data));
+
+                console.log(new Uint8Array(res));
+
+                console.log(new Blob([res]));
+                console.log(new Uint8Array(new Blob([res])));
+
+            }
+        })
+    })
+
+</script>
+
+</body>
+</html>
