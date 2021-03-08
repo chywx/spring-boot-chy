@@ -15,10 +15,13 @@
 
     $(function () {
         // console.log(protobuf)
+        console.log(123)
 
         $.ajax({
             url: "http://localhost:8881/demo/person/1",
-            responseType: 'blob',
+            responseType: 'arraybuffer',
+            // dataType: "binary",
+            // xhrFields: { responseType: "arraybuffer" },
             success: function (res) {
                 console.log(res)
 
@@ -27,10 +30,26 @@
                 console.log(new Uint8Array(res));
 
                 console.log(new Blob([res]));
+                console.log(new Blob([123]));
                 console.log(new Uint8Array(new Blob([res])));
 
+            },
+            error: function (res) {
+                console.log("error", res)
             }
         })
+
+        console.log("---------")
+
+        var oReq = new XMLHttpRequest();
+        oReq.open("GET", "http://localhost:8881/demo/person/2", true);
+        oReq.responseType = "blob";
+        oReq.onload = function (oEvent) {
+            console.log(oReq.response)
+            var blob = oReq.response;
+            console.log("aaa", blob);
+        };
+        oReq.send();
     })
 
 </script>

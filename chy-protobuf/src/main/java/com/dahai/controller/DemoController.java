@@ -60,4 +60,12 @@ public class DemoController {
 
     }
 
+    @Test
+    public void test2() {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:8881/demo/person/1", String.class);
+        System.out.println(forEntity.getBody());
+        System.out.println(forEntity.getBody().getBytes());
+    }
+
 }
