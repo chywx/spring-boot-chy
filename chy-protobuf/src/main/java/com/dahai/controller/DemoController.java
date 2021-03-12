@@ -4,6 +4,7 @@ package com.dahai.controller;/**
  * Description：
  */
 
+import com.dahai.protobuf.PersonModel;
 import com.dahai.protobuf.PersonModel.Person;
 import com.dahai.vo.ResultVo;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -40,24 +41,18 @@ public class DemoController {
             .setEmail("1559843332@qq.com")
             .build();
 
-        ResultVo resultVo = new ResultVo();
-        resultVo.setData(person.toByteArray());
-
         return person.toByteArray();
-
     }
 
 
     @Test
     public void test1() throws IOException {
-
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://localhost:8881/demo/person/2";
         ResponseEntity<Resource> forEntity = restTemplate.getForEntity(url, Resource.class);
         System.out.println(forEntity.getBody());
         Person person = Person.parseFrom(forEntity.getBody().getInputStream());
         System.out.println(person);
-
     }
 
     @Test
@@ -66,6 +61,24 @@ public class DemoController {
         ResponseEntity<String> forEntity = restTemplate.getForEntity("http://localhost:8881/demo/person/1", String.class);
         System.out.println(forEntity.getBody());
         System.out.println(forEntity.getBody().getBytes());
+    }
+
+    @Test
+    public void test3() throws InvalidProtocolBufferException {
+        // 创建person对象
+        Person person = Person.newBuilder()
+            .setId(1)
+            .setName("陈海洋")
+            .setAge(18)
+            .setEmail("1559843332@qq.com")
+            .build();
+
+        System.out.println(person);
+
+        // 反序列化获取person
+        byte[] bytes = person.toByteArray();
+        Person newPerson = Person.parseFrom(bytes);
+        System.out.println(newPerson);
     }
 
 }
