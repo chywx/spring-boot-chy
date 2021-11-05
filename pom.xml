@@ -15,6 +15,7 @@
     <module>chy-rocketmq</module>
     <module>chy-screw</module>
     <module>chy-protobuf</module>
+    <module>chy-db</module>
   </modules>
 
   <name>spring-boot-chy</name>
