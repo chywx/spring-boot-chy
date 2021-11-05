@@ -19,3 +19,6 @@ mybatis逆向工程
 
 ## generate pdf
 根据HTML生成pdf，比如生成合同等
+
+## db
+基于mybatis集成mysql
