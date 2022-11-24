@@ -16,6 +16,7 @@
     <module>chy-screw</module>
     <module>chy-protobuf</module>
     <module>chy-db</module>
+    <module>chy-websocket</module>
   </modules>
 
   <name>spring-boot-chy</name>
