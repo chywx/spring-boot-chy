@@ -22,3 +22,6 @@ mybatis逆向工程
 
 ## db
 基于mybatis集成mysql
+
+## websocket
+集成websocket
