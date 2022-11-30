@@ -22,7 +22,7 @@ public class KafkaInitialConfiguration {
     @Bean
     public NewTopic initialTopic() {
         System.out.println("initialTopic");
-        return new NewTopic("test-topic", 8, (short) 1);
+        return new NewTopic("test-topic", 8, (short) 2);
     }
 
 }
