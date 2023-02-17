@@ -19,7 +19,7 @@ public class PullConsumer {
         consumer.setNamesrvAddr("192.168.50.102:9876");
         consumer.start();
 
-        Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("DemoTopic-chy");
+        Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("test-a");
         for (MessageQueue mq : mqs) {
 
             SINGLE_MQ:

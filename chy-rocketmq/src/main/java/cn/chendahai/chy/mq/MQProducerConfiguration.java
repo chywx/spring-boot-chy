@@ -38,7 +38,7 @@ public class MQProducerConfiguration {
     public DefaultMQProducer getDefaultMQProducer(){
         DefaultMQProducer producer = new DefaultMQProducer(this.groupName);
         producer.setNamesrvAddr(namesrvAddr);// 地址
-        producer.setCreateTopicKey("AUTO_CREATE_TOPIC_KEY");
+//        producer.setCreateTopicKey("AUTO_CREATE_TOPIC_KEY");
         producer.setMaxMessageSize(this.maxMessageSize);// 消息大小
         producer.setSendMsgTimeout(this.sendMsgTimeout);// 超时时间
         producer.setRetryTimesWhenSendFailed(this.retryTimesWhenSendFailed);// 重置次数
