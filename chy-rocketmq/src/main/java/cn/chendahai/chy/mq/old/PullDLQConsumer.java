@@ -1,25 +1,26 @@
-package cn.chendahai.chy.mq;
+package cn.chendahai.chy.mq.old;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.PullResult;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
 
-public class PullConsumer {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class PullDLQConsumer {
 
     private static final Map<MessageQueue, Long> offseTable = new HashMap<MessageQueue, Long>();
 
     public static void main(String[] args) throws MQClientException {
         DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("springboot-rocketmq-dahai");
-        consumer.setNamesrvAddr("192.168.50.102:9876");
+        consumer.setNamesrvAddr("192.168.132.201:9876");
         consumer.start();
 
-        Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("test-a");
+        Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("%DLQ%springboot-rocketmq-dahai");
         for (MessageQueue mq : mqs) {
 
             SINGLE_MQ:

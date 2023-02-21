@@ -1,13 +1,13 @@
-package cn.chendahai.chy.mq;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+package cn.chendahai.chy.mq.old;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.listener.*;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
@@ -16,9 +16,11 @@ public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrentl
 
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
         try {
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.SECONDS.sleep(1);
 
-            int i = 1 / 0;
+            MessageExt messageExt = list.get(0);
+            System.out.println("chy>>>>" + new String(messageExt.getBody()));
+//            int i = 1 / 0;
 
         } catch (Exception e) {
             log.error("Concurrently", e);
@@ -30,14 +32,14 @@ public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrentl
         }
         MessageExt messageExt = list.get(0);
         String msg = new String(messageExt.getBody());
-        System.out.println("接收到的消息：" + msg);
+        log.info("接收到的消息：{}", msg);
         return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
     }
 
-//    @Override
+    //    @Override
     public ConsumeOrderlyStatus consumeMessage(List<MessageExt> list, ConsumeOrderlyContext consumeOrderlyContext) {
         try {
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.SECONDS.sleep(1);
 
 //            int i = 1 / 0;
 
@@ -51,7 +53,7 @@ public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrentl
         }
         MessageExt messageExt = list.get(0);
         String msg = new String(messageExt.getBody());
-        System.out.println("consumeMessage 接收到的消息：" + msg);
+        log.info("consumeMessage 接收到的消息：{}", msg);
         return ConsumeOrderlyStatus.SUCCESS;
     }
 }

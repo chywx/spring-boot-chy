@@ -1,4 +1,4 @@
-package cn.chendahai.chy.mq;
+package cn.chendahai.chy.mq.old;
 
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -35,7 +35,7 @@ public class MQProducerConfiguration {
     private Integer retryTimesWhenSendFailed;
 
     @Bean
-    public DefaultMQProducer getDefaultMQProducer(){
+    public DefaultMQProducer defaultMQProducer(){
         DefaultMQProducer producer = new DefaultMQProducer(this.groupName);
         producer.setNamesrvAddr(namesrvAddr);// 地址
 //        producer.setCreateTopicKey("AUTO_CREATE_TOPIC_KEY");
