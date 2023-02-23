@@ -3,14 +3,18 @@ package cn.chendahai.chy.mq.config;
 import cn.chendahai.chy.mq.enums.MQGroup;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.MessageQueueSelector;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.common.message.MessageQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Configuration
@@ -80,6 +84,30 @@ public class RocketMQProducer {
             message.setBody(msg.getBytes());
 
             return producer.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public SendResult sendOrderly(DefaultMQProducer producer, String msg) {
+        try {
+            String producerGroup = producer.getProducerGroup();
+            MQGroup mqGroup = MQGroup.getByProducerName(producerGroup);
+
+            Message message = new Message();
+            message.setTopic(mqGroup.getTopic());
+            message.setBody(msg.getBytes());
+
+            return producer.send(message, new MessageQueueSelector() {
+                @Override
+                public MessageQueue select(List<MessageQueue> list, Message message, Object arg) {
+                    Integer id = (Integer) arg;
+                    int index = id % list.size();
+                    return list.get(index);
+                }
+            }, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
