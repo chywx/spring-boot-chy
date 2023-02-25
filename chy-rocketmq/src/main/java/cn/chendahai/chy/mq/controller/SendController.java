@@ -35,7 +35,7 @@ public class SendController {
     @RequestMapping("/sendByTopic1")
     public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test1MQProducer, "1>>>" + msg);
+            SendResult send = rocketMQProducer.send(test1MQProducer, "topic1>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";
@@ -44,7 +44,7 @@ public class SendController {
     @RequestMapping("/sendByTopic2")
     public String sendByTopic2(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test2MQProducer, "2>>>" + msg);
+            SendResult send = rocketMQProducer.send(test2MQProducer, "topic2>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";
@@ -53,7 +53,7 @@ public class SendController {
     @RequestMapping("/sendByTopic3")
     public String sendByTopic3(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test3MQProducer, "3>>>" + msg);
+            SendResult send = rocketMQProducer.send(test3MQProducer, "topic3>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";

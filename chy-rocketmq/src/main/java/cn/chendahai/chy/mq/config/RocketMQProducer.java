@@ -115,5 +115,24 @@ public class RocketMQProducer {
 
     }
 
+    public SendResult sendDelay(DefaultMQProducer producer, String msg, Integer delayTimeLevel) {
+        try {
+            String producerGroup = producer.getProducerGroup();
+            MQGroup mqGroup = MQGroup.getByProducerName(producerGroup);
+
+            Message message = new Message();
+            message.setTopic(mqGroup.getTopic());
+            message.setBody(msg.getBytes());
+
+            message.setDelayTimeLevel(delayTimeLevel);
+
+            return producer.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 
 }

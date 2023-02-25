@@ -1,20 +1,19 @@
 package cn.chendahai.chy.mq.controller;
 
 import cn.chendahai.chy.mq.config.RocketMQProducer;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RestController
-@RequestMapping("/sendOrderly")
-public class SendOrderlyController {
+@RequestMapping("/sendDelay")
+public class SendDelayController {
 
     @Autowired
     private RocketMQProducer rocketMQProducer;
@@ -25,11 +24,10 @@ public class SendOrderlyController {
 
 
     @RequestMapping("/send")
-    public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.sendOrderly(test1MQProducer, "topic1>>>" + msg);
-            System.out.println("发送的消息：" + send.toString());
-        }
+    public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer delayTimeLevel) {
+
+        SendResult send = rocketMQProducer.sendDelay(test1MQProducer, "topic1>>>发送delay消息，发送时间为：" + LocalDateTime.now() + "延迟级别：" + delayTimeLevel + "消息为：" + msg, delayTimeLevel);
+        System.out.println("发送的消息：" + send.toString());
         return "success";
     }
 
