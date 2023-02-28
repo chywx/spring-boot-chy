@@ -1,0 +1,7 @@
+server:
+  port: 7081
+spring:
+  redis:
+    host: 192.168.117.222
+    database: 2
+    password: 123456
