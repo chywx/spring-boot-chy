@@ -14,8 +14,16 @@ public class TestController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+//    @Value("${spring.redis.sentinel.nodes}")
+//    private List<String> nodes;
+
+//    @Autowired
+//    private RedisConfigOld redisConfigOld;
+
     @GetMapping("/simpleTest")
     public String simpleTest(String key, String value) {
+//        System.out.println(nodes);
+//        System.out.println(redisConfigOld);
         ValueOperations valueOperations = redisTemplate.opsForValue();
         valueOperations.set("simple:" + key, value);
         Object o = valueOperations.get("simple:" + key);
