@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import io.lettuce.core.ReadFrom;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -47,7 +46,7 @@ public class RedisConfig {
         LettucePoolingClientConfiguration lettuceClientConfiguration = LettucePoolingClientConfiguration.builder()
                 .poolConfig(genericObjectPoolConfig)
                 // 读写分离，若主节点能抗住读写并发，则不需要设置，全都走主节点即可
-                .readFrom(ReadFrom.ANY)
+                .readFrom(new ReadFromCustom())
                 .build();
 
         return new LettuceConnectionFactory(redisSentinelConfiguration, lettuceClientConfiguration);

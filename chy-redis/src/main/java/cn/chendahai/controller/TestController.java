@@ -1,5 +1,6 @@
 package cn.chendahai.controller;
 
+import cn.chendahai.config.ReadFromCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -27,6 +28,17 @@ public class TestController {
         ValueOperations valueOperations = redisTemplate.opsForValue();
         valueOperations.set("simple:" + key, value);
         Object o = valueOperations.get("simple:" + key);
+        return "success>>>" + o;
+    }
+
+    @GetMapping("/simpleTestReadMaster")
+    public String simpleTestReadMaster(String key, String value) {
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        valueOperations.set("simpleTestReadMaster:" + key, value);
+
+        ReadFromCustom.readMaster();
+        Object o = valueOperations.get("simpleTestReadMaster:" + key);
+        ReadFromCustom.clear();
         return "success>>>" + o;
     }
 }
