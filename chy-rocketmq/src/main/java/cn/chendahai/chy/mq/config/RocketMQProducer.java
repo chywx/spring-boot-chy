@@ -65,7 +65,7 @@ public class RocketMQProducer {
         producer.setRetryTimesWhenSendFailed(this.retryTimesWhenSendFailed);// 重置次数
         try {
             producer.start();
-            logger.info("producer is start ! addr:{}, groupName:{}", this.namesrvAddr, MQGroup.DEMO3.getProducerName());
+            logger.info("producer is start ! addr:{}, groupName:{}", this.namesrvAddr, group.getProducerName());
             return producer;
         } catch (MQClientException e) {
             e.printStackTrace();

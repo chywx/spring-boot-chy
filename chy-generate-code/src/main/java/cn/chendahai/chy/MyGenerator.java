@@ -15,17 +15,17 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  */
 public class MyGenerator {
 
-    private static String table = "bet_log";
+    private static String table = "bet_center";
 //    private static String suffix = "log";
     /**
      * db
      */
-    private static String url = "jdbc:mysql://inner-mysql.gbank.club:3306/" + table + "?serverTimezone=CTT";
+    private static String url = "jdbc:mysql://192.168.50.81:3306/" + table + "?serverTimezone=CTT";
     private static String user = "root";
-    private static String password = "gbankclub";
+    private static String password = "ahthie5ioMaizi5aichieTh";
     private static String dirverName = "com.mysql.cj.jdbc.Driver";
     private static String author = "陈海洋";
-    private static String outputDir = "C:\\Users\\Administrator\\Desktop\\generate-code";
+    private static String outputDir = "D:\\generate-code";
     /**
      * 生成的东西放在这个包里
      */
