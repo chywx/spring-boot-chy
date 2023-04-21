@@ -1,0 +1,12 @@
+server:
+  port: 8013
+
+
+spring:
+  application:
+    name: chy-oss
+
+oss:
+  endpoint: xxx
+  accessKey: xxx
+  secretkey: xxx

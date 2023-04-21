@@ -19,6 +19,7 @@
     <module>chy-websocket</module>
     <module>chy-redis</module>
     <module>chy-test</module>
+    <module>chy-oss</module>
   </modules>
 
   <name>spring-boot-chy</name>
