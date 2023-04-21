@@ -18,6 +18,7 @@
     <module>chy-db</module>
     <module>chy-websocket</module>
     <module>chy-redis</module>
+    <module>chy-test</module>
   </modules>
 
   <name>spring-boot-chy</name>
