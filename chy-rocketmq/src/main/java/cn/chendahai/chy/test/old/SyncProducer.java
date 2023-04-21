@@ -1,4 +1,4 @@
-package cn.chendahai.chy.mq.old;
+package cn.chendahai.chy.test.old;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

@@ -1,8 +1,8 @@
-package cn.chendahai.chy.mq.enums;
+package cn.chendahai.chy.test.enums;
 
-import cn.chendahai.chy.mq.listener.Demo1Listener;
-import cn.chendahai.chy.mq.listener.Demo2Listener;
-import cn.chendahai.chy.mq.listener.Demo3Listener;
+import cn.chendahai.chy.test.listener.Demo1Listener;
+import cn.chendahai.chy.test.listener.Demo2Listener;
+import cn.chendahai.chy.test.listener.Demo3Listener;
 import org.apache.rocketmq.client.consumer.listener.MessageListener;
 
 /**

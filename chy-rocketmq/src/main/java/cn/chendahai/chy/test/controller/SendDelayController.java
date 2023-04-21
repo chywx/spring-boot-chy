@@ -1,6 +1,6 @@
-package cn.chendahai.chy.mq.controller;
+package cn.chendahai.chy.test.controller;
 
-import cn.chendahai.chy.mq.config.RocketMQProducer;
+import cn.chendahai.chy.test.config.RocketMQProducer;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Autowired;
