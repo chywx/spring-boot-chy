@@ -20,6 +20,7 @@
     <module>chy-redis</module>
     <module>chy-test</module>
     <module>chy-oss</module>
+    <module>chy-excel</module>
   </modules>
 
   <name>spring-boot-chy</name>

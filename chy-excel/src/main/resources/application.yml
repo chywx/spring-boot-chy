@@ -1,0 +1,7 @@
+server:
+  port: 8119
+
+
+spring:
+  application:
+    name: chy-excel
