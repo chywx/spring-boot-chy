@@ -19,6 +19,9 @@ public class LuckyBusAddMoney {
         for (File file : fileDirectory.listFiles()) {
 
             String fileName = file.getName();
+
+            System.out.println("fileName:" + fileName);
+
             String[] split = fileName.split("\\.");
             String suffix = split[split.length - 1];
             if ("xlsx".equals(suffix)) {
@@ -43,7 +46,8 @@ public class LuckyBusAddMoney {
                             continue;
                         }
                         String content = String.format(curl, recall.getUserId(), recall.getRewardAmount());
-                        System.out.println(fileName + "\t" + JSONObject.toJSONString(recall) + "\t" + content);
+//                        System.out.println(fileName + "\t" + JSONObject.toJSONString(recall) + "\t" + content);
+                        System.out.println(String.format(curl, recall.getUserId(), recall.getRewardAmount()));
                         printWriter.println(content);
                     }
 
