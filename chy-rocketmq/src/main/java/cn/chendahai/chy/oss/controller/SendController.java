@@ -20,22 +20,10 @@ public class SendController {
     @Autowired
     private RocketMQProducer rocketMQProducer;
 
-    @Autowired
-    @Qualifier("test1MQProducer")
-    private DefaultMQProducer test1MQProducer;
-
-    @Autowired
-    @Qualifier("test2MQProducer")
-    private DefaultMQProducer test2MQProducer;
-
-    @Autowired
-    @Qualifier("test3MQProducer")
-    private DefaultMQProducer test3MQProducer;
-
     @RequestMapping("/sendByTopic1")
     public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test1MQProducer, "topic1>>>" + msg);
+            SendResult send = rocketMQProducer.sendDemo1("topic1>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";
@@ -44,7 +32,7 @@ public class SendController {
     @RequestMapping("/sendByTopic2")
     public String sendByTopic2(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test2MQProducer, "topic2>>>" + msg);
+            SendResult send = rocketMQProducer.sendDemo2("topic2>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";
@@ -53,7 +41,7 @@ public class SendController {
     @RequestMapping("/sendByTopic3")
     public String sendByTopic3(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.send(test3MQProducer, "topic3>>>" + msg);
+            SendResult send = rocketMQProducer.sendDemo3("topic3>>>" + msg);
             System.out.println("发送的消息：" + send.toString());
         }
         return "success";
@@ -64,6 +52,10 @@ public class SendController {
     @Qualifier("defaultMQProducer")
     private DefaultMQProducer defaultMQProducer;
 
+
+    /**
+     * 使用默认的生产者进行消息发送
+     */
     @RequestMapping("/sendTest")
     public String sendTest(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         for (int i = 1; i <= count; i++) {

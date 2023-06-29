@@ -42,17 +42,17 @@ public class RocketMQProducer {
     private static final Logger logger = LoggerFactory.getLogger(RocketMQProducer.class);
 
     @Bean
-    public DefaultMQProducer test1MQProducer() {
+    public DefaultMQProducer demo1MQProducer() {
         return getDefaultMQProducer(MQGroup.DEMO1);
     }
 
     @Bean
-    public DefaultMQProducer test2MQProducer() {
+    public DefaultMQProducer demo2MQProducer() {
         return getDefaultMQProducer(MQGroup.DEMO2);
     }
 
     @Bean
-    public DefaultMQProducer test3MQProducer() {
+    public DefaultMQProducer demo3MQProducer() {
         return getDefaultMQProducer(MQGroup.DEMO3);
     }
 
@@ -91,7 +91,7 @@ public class RocketMQProducer {
 
     }
 
-    public SendResult sendOrderly(DefaultMQProducer producer, String msg) {
+    public SendResult sendOrderly(DefaultMQProducer producer, String msg, Integer arg) {
         try {
             String producerGroup = producer.getProducerGroup();
             MQGroup mqGroup = MQGroup.getByProducerName(producerGroup);
@@ -107,7 +107,7 @@ public class RocketMQProducer {
                     int index = id % list.size();
                     return list.get(index);
                 }
-            }, 0);
+            }, arg);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,6 +115,12 @@ public class RocketMQProducer {
 
     }
 
+    /**
+     * @param producer
+     * @param msg
+     * @param delayTimeLevel "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h";
+     * @return
+     */
     public SendResult sendDelay(DefaultMQProducer producer, String msg, Integer delayTimeLevel) {
         try {
             String producerGroup = producer.getProducerGroup();
@@ -132,6 +138,27 @@ public class RocketMQProducer {
         }
         return null;
 
+    }
+
+
+    public SendResult sendDemo1(String msg) {
+        return send(demo1MQProducer(), msg);
+    }
+
+    public SendResult sendDemo2(String msg) {
+        return send(demo2MQProducer(), msg);
+    }
+
+    public SendResult sendDemo3(String msg) {
+        return send(demo3MQProducer(), msg);
+    }
+
+    public SendResult sendDelayDemo1(String msg, Integer delayTimeLevel) {
+        return sendDelay(demo1MQProducer(), msg, delayTimeLevel);
+    }
+
+    public SendResult sendOrderlyDemo1(String msg, Integer arg) {
+        return sendOrderly(demo1MQProducer(), msg, arg);
     }
 
 

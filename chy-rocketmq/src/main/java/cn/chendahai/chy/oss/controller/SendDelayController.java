@@ -18,16 +18,13 @@ public class SendDelayController {
     @Autowired
     private RocketMQProducer rocketMQProducer;
 
-    @Autowired
-    @Qualifier("test1MQProducer")
-    private DefaultMQProducer test1MQProducer;
-
 
     @RequestMapping("/send")
     public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer delayTimeLevel) {
 
-        SendResult send = rocketMQProducer.sendDelay(test1MQProducer, "topic1>>>发送delay消息，发送时间为：" + LocalDateTime.now() + "延迟级别：" + delayTimeLevel + "消息为：" + msg, delayTimeLevel);
-        System.out.println("发送的消息：" + send.toString());
+        SendResult send = rocketMQProducer.sendDelayDemo1("topic1>>>发送delay消息，发送时间为：" + LocalDateTime.now() + "延迟级别：" + delayTimeLevel + "消息为：" + msg, delayTimeLevel);
+        System.out.println("发送的延迟消息级别：" + delayTimeLevel);
+        System.out.println("发送的延迟消息消息：" + send.toString());
         return "success";
     }
 

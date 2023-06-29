@@ -19,16 +19,13 @@ public class SendOrderlyController {
     @Autowired
     private RocketMQProducer rocketMQProducer;
 
-    @Autowired
-    @Qualifier("test1MQProducer")
-    private DefaultMQProducer test1MQProducer;
-
 
     @RequestMapping("/send")
-    public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
+    public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count, @RequestParam(defaultValue = "0") Integer arg) {
         for (int i = 1; i <= count; i++) {
-            SendResult send = rocketMQProducer.sendOrderly(test1MQProducer, "topic1>>>" + msg);
-            System.out.println("发送的消息：" + send.toString());
+            SendResult send = rocketMQProducer.sendOrderlyDemo1("topic1>>>" + msg, arg);
+            System.out.println("发送的顺序消息arg：" + arg);
+            System.out.println("发送的顺序消息消息：" + send.toString());
         }
         return "success";
     }
