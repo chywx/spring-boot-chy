@@ -3,6 +3,7 @@ package cn.chendahai.chy.oss.enums;
 import cn.chendahai.chy.oss.listener.Demo1Listener;
 import cn.chendahai.chy.oss.listener.Demo2Listener;
 import cn.chendahai.chy.oss.listener.Demo3Listener;
+import cn.chendahai.chy.oss.listener.Poker1Listener;
 import org.apache.rocketmq.client.consumer.listener.MessageListener;
 
 /**
@@ -15,6 +16,8 @@ public enum MQGroup {
     DEMO2("demo2", "topic-demo2", "producer-demo2", "consumer-demo2", new Demo2Listener()),
 
     DEMO3("demo3", "topic-demo3", "producer-demo3", "consumer-demo3", new Demo3Listener()),
+
+    POKER1("poker1", "topic-poker1", "producer-poker1", "consumer-poker1", new Poker1Listener()),
     ;
 
     public static MQGroup getByProducerName(String producerName) {

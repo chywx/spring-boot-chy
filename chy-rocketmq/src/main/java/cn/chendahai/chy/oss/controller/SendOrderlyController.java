@@ -20,10 +20,21 @@ public class SendOrderlyController {
     private RocketMQProducer rocketMQProducer;
 
 
-    @RequestMapping("/send")
-    public String sendByTopic1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count, @RequestParam(defaultValue = "0") Integer arg) {
+    @RequestMapping("/sendOrderlyDemo1")
+    public String sendOrderlyDemo1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count, @RequestParam(defaultValue = "0") Integer arg) {
         for (int i = 1; i <= count; i++) {
             SendResult send = rocketMQProducer.sendOrderlyDemo1("topic1>>>" + msg, arg);
+            System.out.println("发送的顺序消息arg：" + arg);
+            System.out.println("发送的顺序消息消息：" + send.toString());
+        }
+        return "success";
+    }
+
+    @RequestMapping("/sendOrderlyPoker1")
+    public String sendOrderlyPoker1(@RequestParam(defaultValue = "hello") String msg, @RequestParam(defaultValue = "1") Integer count, @RequestParam(defaultValue = "0") Integer arg) {
+        for (int i = 1; i <= count; i++) {
+            msg = "poker1>>>" + msg + "\t>>>第" + i + "条";
+            SendResult send = rocketMQProducer.sendOrderlyPoker1(msg, arg);
             System.out.println("发送的顺序消息arg：" + arg);
             System.out.println("发送的顺序消息消息：" + send.toString());
         }

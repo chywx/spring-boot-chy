@@ -56,6 +56,11 @@ public class RocketMQProducer {
         return getDefaultMQProducer(MQGroup.DEMO3);
     }
 
+    @Bean
+    public DefaultMQProducer poker1MQProducer() {
+        return getDefaultMQProducer(MQGroup.POKER1);
+    }
+
     private DefaultMQProducer getDefaultMQProducer(MQGroup group) {
         DefaultMQProducer producer = new DefaultMQProducer(group.getProducerName());
         producer.setNamesrvAddr(namesrvAddr);// 地址
@@ -159,6 +164,10 @@ public class RocketMQProducer {
 
     public SendResult sendOrderlyDemo1(String msg, Integer arg) {
         return sendOrderly(demo1MQProducer(), msg, arg);
+    }
+
+    public SendResult sendOrderlyPoker1(String msg, Integer arg) {
+        return sendOrderly(poker1MQProducer(), msg, arg);
     }
 
 
