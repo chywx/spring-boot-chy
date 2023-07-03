@@ -1,4 +1,4 @@
-package cn.chendahai.chy.oss.config;
+package cn.chendahai.chy.i18n.config;
 
 /**
  * @Description

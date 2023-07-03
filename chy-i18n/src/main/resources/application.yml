@@ -1,0 +1,7 @@
+server:
+  port: 9891
+
+
+spring:
+  application:
+    name: chy-i18n
