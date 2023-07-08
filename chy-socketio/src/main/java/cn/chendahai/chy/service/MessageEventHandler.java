@@ -30,6 +30,9 @@ public class MessageEventHandler {
         try {
             socketIOServer.start();
             log.info("socketServer is start");
+
+            new NamingRegister().registerInstance();
+            log.info("nacos register instance");
         } catch (Exception e) {
             e.printStackTrace();
         }
