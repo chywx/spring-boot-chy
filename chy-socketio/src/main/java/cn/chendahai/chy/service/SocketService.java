@@ -1,4 +1,4 @@
-package cn.chendahai.gateway.service;
+package cn.chendahai.chy.service;
 
 import com.corundumstudio.socketio.SocketConfig;
 import com.corundumstudio.socketio.SocketIOServer;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-//@Configuration
 @Slf4j
 @Component
 public class SocketService {
@@ -16,16 +15,19 @@ public class SocketService {
     public SocketIOServer socketIOServer() {
         System.out.println("init socket server");
 
+
+        com.corundumstudio.socketio.Configuration configuration = new com.corundumstudio.socketio.Configuration();
+        configuration.setHostname("127.0.0.1");
+//        configuration.setHostname("192.16.21.102");
+        configuration.setPort(2468);
+        configuration.setContext("/socketio");
+
         // 开启socket端口复用
         SocketConfig socketConfig = new SocketConfig();
         socketConfig.setReuseAddress(true);
-
-        com.corundumstudio.socketio.Configuration configuration = new com.corundumstudio.socketio.Configuration();
-//        Configuration configuration = new Configure();
-        configuration.setHostname("192.16.21.102");
-        configuration.setPort(2468);
-//        configuration.setContext("/demo");
         configuration.setSocketConfig(socketConfig);
+
+        // 设置工作线程数
         configuration.setWorkerThreads(100);
         // 设置允许客户端访问
         configuration.setAllowCustomRequests(true);
@@ -39,11 +41,8 @@ public class SocketService {
         configuration.setTransports(Transport.POLLING, Transport.WEBSOCKET);
 //        configuration.setOrigin("*");
 
-        SocketIOServer socketIOServer = new SocketIOServer(configuration);
-//        socketIOServer.start();
-//        System.out.println("socket server init finish");
+        return new SocketIOServer(configuration);
 
-        return socketIOServer;
     }
 
     @Bean

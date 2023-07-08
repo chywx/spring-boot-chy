@@ -1,2 +1,6 @@
-spring.application.name=springboot-socketio-dahai
-server.port=8099
+spring:
+  application:
+    name: springboot-socketio-dahai
+
+server:
+  port: 8642

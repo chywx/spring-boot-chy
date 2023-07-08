@@ -1,4 +1,4 @@
-package cn.chendahai.gateway;
+package cn.chendahai.chy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
