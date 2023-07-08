@@ -43,13 +43,14 @@
 
     function connect() {
         var opts = {
-            path: '/socketio',
+            path: '/xiaofen',
             query: 'userId=1314'
         };
         // socket = io.connect('http://192.168.1.150:9091', opts);
         // socket = io.connect('ws://192.168.1.233:6688', opts);
         // socket = io.connect('ws://localhost:2468', opts);
-        socket = io.connect('ws://127.0.0.1:2468', opts);
+        // socket = io.connect('ws://127.0.0.1:2468', opts);
+        socket = io.connect('ws://192.16.21.102:2468', opts);
         // socket = io.connect('ws://hy.chendahai.cn:6666', opts);
         socket.on('connect', function () {
             console.log("连接成功");

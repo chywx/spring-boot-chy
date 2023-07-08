@@ -17,10 +17,10 @@ public class SocketService {
 
 
         com.corundumstudio.socketio.Configuration configuration = new com.corundumstudio.socketio.Configuration();
-        configuration.setHostname("127.0.0.1");
-//        configuration.setHostname("192.16.21.102");
+//        configuration.setHostname("127.0.0.1");
+        configuration.setHostname("192.16.21.102");
         configuration.setPort(2468);
-        configuration.setContext("/socketio");
+        configuration.setContext("/xiaofen");
 
         // 开启socket端口复用
         SocketConfig socketConfig = new SocketConfig();

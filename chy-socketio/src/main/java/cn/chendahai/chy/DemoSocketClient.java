@@ -14,7 +14,7 @@ public class DemoSocketClient {
     public static void main(String[] args) {
         try {
             IO.Options options = new IO.Options();
-            options.path = "/socketio";
+            options.path = "/xiaofen";
             options.query = "userId=1234";
             final Socket socket = IO.socket("http://127.0.0.1:2468", options);
             socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {

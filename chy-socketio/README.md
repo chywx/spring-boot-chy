@@ -1,7 +1,7 @@
 ## socket.io
 
 ## 连接
-ws://127.0.0.1:2468/socketio/?EIO=3&transport=websocket
+ws://127.0.0.1:2468/xiaofen/?EIO=3&transport=websocket
 
 需要注意，有个/斜杠
 

@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 @Slf4j
 @Component
-@ServerEndpoint("/websocket/baobao")    // 指定websocket 连接的url
+@ServerEndpoint("/baobao")    // 指定websocket 连接的url
 public class WebSocketServer {
 
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
