@@ -9,7 +9,8 @@ public class Recall {
     @ExcelProperty(value= "user_id",index = 0)
     private Integer userId;
 
-    @ExcelProperty(value= "1%返给用户",index = 3)
+//    @ExcelProperty(value= "1%返给用户",index = 3)
+    @ExcelProperty(value= "1%返给用户")
     private String rewardAmount;
 
 }
