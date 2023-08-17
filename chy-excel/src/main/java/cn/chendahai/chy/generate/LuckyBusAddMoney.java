@@ -6,6 +6,7 @@ import com.alibaba.excel.event.SyncReadListener;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class LuckyBusAddMoney {
@@ -15,7 +16,10 @@ public class LuckyBusAddMoney {
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0616-0622";
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0621-0627";
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0629-0705";
-        String rootPath = "C:\\Users\\cob\\Downloads\\0706-0712";
+//        String rootPath = "C:\\Users\\cob\\Downloads\\0706-0712";
+//        String rootPath = "C:\\Users\\cob\\Downloads\\0718-0724";
+//        String rootPath = "C:\\Users\\cob\\Downloads\\0726-0801";
+        String rootPath = "C:\\Users\\cob\\Downloads\\0802-0808";
 
         File fileDirectory = new File(rootPath);
 
