@@ -24,6 +24,7 @@
     <module>chy-oss</module>
     <module>chy-excel</module>
     <module>chy-i18n</module>
+    <module>chy-s3</module>
   </modules>
 
   <name>spring-boot-chy</name>
