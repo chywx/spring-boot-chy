@@ -1,0 +1,7 @@
+server:
+  port: 8333
+
+
+spring:
+  application:
+    name: chy-s3
