@@ -15,4 +15,8 @@ public class Recall {
             "当地货币")
     private String rewardAmount;
 
+    // 游戏特别使用的
+    @ExcelProperty(value= "返利金额")
+    private String gameAmount;
+
 }
