@@ -1,4 +1,4 @@
-package cn.chendahai.chy.oss.test;
+package cn.chendahai.chy.mq.test;
 
 import org.apache.rocketmq.common.message.MessageDecoder;
 import org.apache.rocketmq.common.message.MessageId;

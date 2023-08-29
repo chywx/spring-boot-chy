@@ -1,4 +1,4 @@
-package cn.chendahai.chy.oss.old;
+package cn.chendahai.chy.mq.old;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.listener.*;

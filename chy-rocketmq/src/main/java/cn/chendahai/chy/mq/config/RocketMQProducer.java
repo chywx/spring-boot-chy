@@ -1,6 +1,6 @@
-package cn.chendahai.chy.oss.config;
+package cn.chendahai.chy.mq.config;
 
-import cn.chendahai.chy.oss.enums.MQGroup;
+import cn.chendahai.chy.mq.enums.MQGroup;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MessageQueueSelector;

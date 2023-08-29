@@ -1,64 +1,40 @@
-package cn.chendahai.chy.oss.config;
+package cn.chendahai.chy.mq.old;
 
-
-import cn.chendahai.chy.oss.enums.MQGroup;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.MessageListener;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
-@Slf4j
 @Configuration
-public class RocketMQConsumer {
+public class MQConsumerConfiguration {
     @Value("${rocketmq.consumer.namesrvAddr}")
     private String namesrvAddr;
+    @Value("${rocketmq.consumer.groupName}")
+    private String groupName;
     @Value("${rocketmq.consumer.consumeThreadMin}")
     private int consumeThreadMin;
     @Value("${rocketmq.consumer.consumeThreadMax}")
     private int consumeThreadMax;
+    @Value("${rocketmq.consumer.topics}")
+    private String topics;
     @Value("${rocketmq.consumer.consumeMessageBatchMaxSize}")
     private int consumeMessageBatchMaxSize;
 
-    @Bean
-    public DefaultMQPushConsumer demo1Consumer() {
-        return getDefaultMQPushConsumer(MQGroup.DEMO1);
-    }
+    @Autowired
+    private MQConsumeMsgListenerProcessor mqMessageListenerProcessor;
 
     @Bean
-    public DefaultMQPushConsumer demo2Consumer() {
-        return getDefaultMQPushConsumer(MQGroup.DEMO2);
-    }
+    public DefaultMQPushConsumer getRocketMQConsumer(){
 
-    @Bean
-    public DefaultMQPushConsumer demo3Consumer() {
-        return getDefaultMQPushConsumer(MQGroup.DEMO3);
-    }
 
-    @Bean
-    public DefaultMQPushConsumer poker1Consumer() {
-        return getDefaultMQPushConsumer(MQGroup.POKER1);
-    }
-
-    public DefaultMQPushConsumer getDefaultMQPushConsumer(MQGroup group) {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group.getConsumerName());
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(groupName);
         consumer.setNamesrvAddr(namesrvAddr);
         consumer.setConsumeThreadMin(consumeThreadMin);
         consumer.setConsumeThreadMax(consumeThreadMax);
-
-        MessageListener listener = group.getListener();
-        if (listener instanceof MessageListenerConcurrently) {
-            consumer.registerMessageListener((MessageListenerConcurrently) listener);
-        }
-        if (listener instanceof MessageListenerOrderly) {
-            consumer.registerMessageListener((MessageListenerOrderly) listener);
-        }
+        consumer.registerMessageListener(mqMessageListenerProcessor);
 
         /**
          * 设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费
@@ -75,17 +51,29 @@ public class RocketMQConsumer {
          * 设置一次消费消息的条数，默认为1条
          */
         consumer.setConsumeMessageBatchMaxSize(consumeMessageBatchMaxSize);
+//        consumer.setConsumeMessageBatchMaxSize(2);
 
         try {
-            consumer.subscribe(group.getTopic(), "*");
+            /**
+             * 设置该消费者订阅的主题和tag，如果是订阅该主题下的所有tag，
+             * 则tag使用*；如果需要指定订阅该主题下的某些tag，则使用||分割，例如tag1||tag2||tag3
+             */
+            /*String[] topicTagsArr = topics.split(";");
+            for (String topicTags : topicTagsArr) {
+                String[] topicTag = topicTags.split("~");
+                consumer.subscribe(topicTag[0],topicTag[1]);
+            }*/
+            consumer.subscribe(topics, "*");
+
             consumer.start();
-            log.info("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}", group.getConsumerName(), group.getTopic(), namesrvAddr);
+            System.out.println(String.format("consumer is start !!! groupName:{%s},topics:{%s},namesrvAddr:{%s}",groupName,topics,namesrvAddr));
+            //logger.info("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr);
+
         } catch (Exception e) {
+            // logger.error("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr,e);
             e.printStackTrace();
         }
 
         return consumer;
     }
-
-
 }

@@ -1,10 +1,8 @@
-package cn.chendahai.chy.oss.controller;
+package cn.chendahai.chy.mq.controller;
 
-import cn.chendahai.chy.oss.config.RocketMQProducer;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import cn.chendahai.chy.mq.config.RocketMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,6 @@
-package cn.chendahai.chy.oss.controller;
+package cn.chendahai.chy.mq.controller;
 
-import cn.chendahai.chy.oss.config.RocketMQProducer;
+import cn.chendahai.chy.mq.config.RocketMQProducer;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;

@@ -1,4 +1,4 @@
-package cn.chendahai.chy.oss.listener;
+package cn.chendahai.chy.mq.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class Demo1Listener implements MessageListenerConcurrently {
+public class Demo2Listener implements MessageListenerConcurrently {
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
         try {
             TimeUnit.SECONDS.sleep(1);
 
 //            MessageExt messageExt = list.get(0);
-//            System.out.println("Demo1Listener>>>>" + new String(messageExt.getBody()));
+//            System.out.println("Demo2Listener>>>>" + new String(messageExt.getBody()));
 //            int i = 1 / 0;
 
         } catch (Exception e) {
-            log.error("Demo1Listener", e);
+            log.error("Demo2Listener", e);
             return ConsumeConcurrentlyStatus.RECONSUME_LATER;
         }
         if (CollectionUtils.isEmpty(list)) {
@@ -31,7 +31,7 @@ public class Demo1Listener implements MessageListenerConcurrently {
         }
         MessageExt messageExt = list.get(0);
         String msg = new String(messageExt.getBody());
-        log.info("Demo1Listener接收到的消息：{}", msg);
+        log.info("Demo2Listener接收到的消息：{}", msg);
         return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
     }
 }

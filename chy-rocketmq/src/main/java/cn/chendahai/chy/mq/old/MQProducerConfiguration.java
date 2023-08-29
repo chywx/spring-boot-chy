@@ -1,4 +1,4 @@
-package cn.chendahai.chy.oss.old;
+package cn.chendahai.chy.mq.old;
 
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
