@@ -46,6 +46,21 @@ public class RocketMQConsumer {
         return getDefaultMQPushConsumer(MQGroup.POKER1);
     }
 
+    @Bean
+    public DefaultMQPushConsumer alike1Consumer() {
+        return getDefaultMQPushConsumer(MQGroup.ALIKE1);
+    }
+
+    @Bean
+    public DefaultMQPushConsumer alike2Consumer() {
+        return getDefaultMQPushConsumer(MQGroup.ALIKE2);
+    }
+
+    @Bean
+    public DefaultMQPushConsumer alike3Consumer() {
+        return getDefaultMQPushConsumer(MQGroup.ALIKE3);
+    }
+
     public DefaultMQPushConsumer getDefaultMQPushConsumer(MQGroup group) {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group.getConsumerName());
         consumer.setNamesrvAddr(namesrvAddr);

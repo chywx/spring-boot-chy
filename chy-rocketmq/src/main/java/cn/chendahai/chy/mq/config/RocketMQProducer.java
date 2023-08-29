@@ -57,6 +57,21 @@ public class RocketMQProducer {
     }
 
     @Bean
+    public DefaultMQProducer alike1MQProducer() {
+        return getDefaultMQProducer(MQGroup.ALIKE1);
+    }
+
+    @Bean
+    public DefaultMQProducer alike2MQProducer() {
+        return getDefaultMQProducer(MQGroup.ALIKE2);
+    }
+
+    @Bean
+    public DefaultMQProducer alike3MQProducer() {
+        return getDefaultMQProducer(MQGroup.ALIKE3);
+    }
+
+    @Bean
     public DefaultMQProducer poker1MQProducer() {
         return getDefaultMQProducer(MQGroup.POKER1);
     }
@@ -95,6 +110,7 @@ public class RocketMQProducer {
         return null;
 
     }
+
 
     public SendResult sendOrderly(DefaultMQProducer producer, String msg, Integer arg) {
         try {
