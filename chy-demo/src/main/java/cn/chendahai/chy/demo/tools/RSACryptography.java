@@ -1,7 +1,12 @@
 package cn.chendahai.chy.demo.tools;
 
 import com.alibaba.druid.filter.config.ConfigTools;
+import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
@@ -31,6 +36,27 @@ public class RSACryptography {
         System.out.println(decrypt);
 
 
+    }
+
+    @Test
+    public void testEncrypt() throws Exception {
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\opt\\dbkey\\hw-prod-private-key.txt"));
+        String privateKey = reader.readLine();
+
+        String plainText = "kuG8CVzLBJ0F";
+        String cipherText = ConfigTools.encrypt(privateKey, plainText);
+
+        System.out.println(cipherText);
+    }
+
+    @Test
+    public void testDecrypt() throws Exception {
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\opt\\dbkey\\hw-prod-public-key.txt"));
+        String publicKey = reader.readLine();
+
+        String cipherText = "bF6lN6L6QUy7R7Z/YemJC+pklYiMdoMCLxtxvkovPsLrW73fM8sarIInDZKnQWpM8i0TeGzIQKJXDNLI9IvenQ==";
+        String decrypt = ConfigTools.decrypt(publicKey, cipherText);
+        System.out.println(decrypt);
     }
 
     /**
