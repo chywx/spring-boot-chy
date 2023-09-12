@@ -22,7 +22,8 @@ public class LuckyBusAddMoney {
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0802-0808";
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0808-0814";
 //        String rootPath = "C:\\Users\\cob\\Downloads\\0808扣款异常";
-        String rootPath = "C:\\Users\\cob\\Downloads\\0815-0821";
+//        String rootPath = "C:\\Users\\cob\\Downloads\\0815-0821";
+        String rootPath = "C:\\Users\\cob\\Downloads\\0822-0828";
 
         File fileDirectory = new File(rootPath);
 
