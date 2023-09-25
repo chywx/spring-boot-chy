@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisSentinelConfiguration;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -37,6 +38,10 @@ public class RedisConfig {
 
     @Bean
     public RedisConnectionFactory lettuceConnectionFactory(RedisProperties redisProperties) {
+        if (redisProperties.getHost() != null) {
+            return new LettuceConnectionFactory(new RedisStandaloneConfiguration());
+        }
+
         RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(
                 redisProperties.getSentinel().getMaster(), new HashSet<>(redisProperties.getSentinel().getNodes())
         );
