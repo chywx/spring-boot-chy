@@ -36,16 +36,28 @@ public class RedisConfig {
         return new GenericObjectPoolConfig();
     }
 
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.redis")
+//    public JedisPoolConfig getRedisConfig() {
+//        JedisPoolConfig config = new JedisPoolConfig();
+//        return config;
+//    }
+
     @Bean
     public RedisConnectionFactory lettuceConnectionFactory(RedisProperties redisProperties) {
         if (redisProperties.getHost() != null) {
-            return new LettuceConnectionFactory(new RedisStandaloneConfiguration());
+//        if (true) {
+            RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+            redisStandaloneConfiguration.setDatabase(redisProperties.getDatabase());
+            redisStandaloneConfiguration.setPassword(redisProperties.getPassword());
+            redisStandaloneConfiguration.setHostName(redisProperties.getHost());
+            return new LettuceConnectionFactory(redisStandaloneConfiguration);
         }
 
         RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(
                 redisProperties.getSentinel().getMaster(), new HashSet<>(redisProperties.getSentinel().getNodes())
         );
-        redisSentinelConfiguration.setPassword(RedisPassword.of("123456"));
+        redisSentinelConfiguration.setPassword(RedisPassword.of(redisProperties.getPassword()));
 
         GenericObjectPoolConfig genericObjectPoolConfig = redisPool();
         LettucePoolingClientConfiguration lettuceClientConfiguration = LettucePoolingClientConfiguration.builder()
