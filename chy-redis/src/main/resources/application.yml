@@ -27,5 +27,5 @@ spring:
 logging:
   level:
     root: info
-    io.lettuce.core: debug
+#    io.lettuce.core: debug
     org.springframework.data.redis: debug
