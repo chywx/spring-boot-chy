@@ -2,7 +2,7 @@ package cn.chendahai.chy.generate;
 
 import java.io.*;
 
-public class ThirdGameSWSql {
+public class SWThirdGameSql {
 
     public static void main(String[] args) throws IOException {
 
