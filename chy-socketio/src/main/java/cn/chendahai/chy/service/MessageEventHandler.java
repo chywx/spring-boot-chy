@@ -31,7 +31,8 @@ public class MessageEventHandler {
             socketIOServer.start();
             log.info("socketServer is start");
 
-            new NamingRegister().registerInstance();
+            // 取消注册到nacos
+//            new NamingRegister().registerInstance();
             log.info("nacos register instance");
         } catch (Exception e) {
             e.printStackTrace();

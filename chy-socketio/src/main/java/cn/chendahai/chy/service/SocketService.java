@@ -18,7 +18,7 @@ public class SocketService {
 
         com.corundumstudio.socketio.Configuration configuration = new com.corundumstudio.socketio.Configuration();
 //        configuration.setHostname("127.0.0.1");
-        configuration.setHostname("192.16.21.102");
+        configuration.setHostname("192.16.20.125");
         configuration.setPort(2468);
         configuration.setContext("/xiaofen");
 
