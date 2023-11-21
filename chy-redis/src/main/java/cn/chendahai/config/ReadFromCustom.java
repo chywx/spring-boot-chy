@@ -43,7 +43,7 @@ public class ReadFromCustom extends ReadFrom {
         Boolean readMaster = contextHolder.get();
 
         List<RedisNodeDescription> nodeList = nodes.getNodes();
-        System.out.println(">>>>>>>>>>>>nodeList:" + nodeList);
+//        System.out.println(">>>>>>>>>>>>nodeList:" + nodeList);
 
         // 读主
         if (readMaster != null && readMaster) {
@@ -55,12 +55,14 @@ public class ReadFromCustom extends ReadFrom {
                 }
             }
         }
+        System.out.println(">>>>>>>>>>>>进行随机读取");
+        return nodeList;
         // 随机读
 //        int random = RandomUtil.random(0, nodeList.size() - 1);
-        int random = (int) (Math.random() * nodeList.size());
-        System.out.println(Thread.currentThread().getName() + ">>>>>>>>>>>>随机读：" + random);
-        System.out.println(">>>>>>>>>>>>读取的节点：" + nodeList.get(random));
-        return LettuceLists.newList(nodeList.get(random));
+//        int random = (int) (Math.random() * nodeList.size());
+//        System.out.println(Thread.currentThread().getName() + ">>>>>>>>>>>>随机读：" + random);
+//        System.out.println(">>>>>>>>>>>>读取的节点：" + nodeList.get(random));
+//        return LettuceLists.newList(nodeList.get(random));
     }
 
     public static void main(String[] args) {

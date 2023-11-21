@@ -18,7 +18,7 @@
         <module>chy-db</module>
         <module>chy-websocket</module>
         <module>chy-socketio</module>
-        <module>chy-redis</module>
+<!--        <module>chy-redis</module>-->
         <module>chy-test</module>
         <module>chy-demo</module>
         <module>chy-oss</module>

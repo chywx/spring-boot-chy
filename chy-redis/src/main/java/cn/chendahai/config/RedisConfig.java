@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import io.lettuce.core.ReadFrom;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -15,6 +16,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,6 +24,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.TimeZone;
 
@@ -45,13 +48,13 @@ public class RedisConfig {
 
     @Bean
     public RedisConnectionFactory lettuceConnectionFactory(RedisProperties redisProperties) {
-        if (redisProperties.getHost() != null) {
-//        if (true) {
-            RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-            redisStandaloneConfiguration.setDatabase(redisProperties.getDatabase());
-            redisStandaloneConfiguration.setPassword(redisProperties.getPassword());
-            redisStandaloneConfiguration.setHostName(redisProperties.getHost());
-            return new LettuceConnectionFactory(redisStandaloneConfiguration);
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+        redisStandaloneConfiguration.setDatabase(redisProperties.getDatabase());
+        redisStandaloneConfiguration.setPassword(redisProperties.getPassword());
+        redisStandaloneConfiguration.setHostName(redisProperties.getHost());
+        if (true) {
+            // 哨兵模式注释掉
+//            return new LettuceConnectionFactory(redisStandaloneConfiguration);
         }
 
         RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration(
@@ -60,10 +63,13 @@ public class RedisConfig {
         redisSentinelConfiguration.setPassword(RedisPassword.of(redisProperties.getPassword()));
 
         GenericObjectPoolConfig genericObjectPoolConfig = redisPool();
-        LettucePoolingClientConfiguration lettuceClientConfiguration = LettucePoolingClientConfiguration.builder()
+//        LettucePoolingClientConfiguration lettuceClientConfiguration = LettucePoolingClientConfiguration.builder()
+        LettuceClientConfiguration lettuceClientConfiguration = LettucePoolingClientConfiguration.builder()
                 .poolConfig(genericObjectPoolConfig)
                 // 读写分离，若主节点能抗住读写并发，则不需要设置，全都走主节点即可
                 .readFrom(new ReadFromCustom())
+//                .readFrom(ReadFrom.ANY)
+                .commandTimeout(Duration.ofSeconds(5))
                 .build();
 
         return new LettuceConnectionFactory(redisSentinelConfiguration, lettuceClientConfiguration);

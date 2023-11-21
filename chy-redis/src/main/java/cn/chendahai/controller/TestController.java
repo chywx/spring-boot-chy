@@ -38,7 +38,12 @@ public class TestController {
 
         ReadFromCustom.readMaster();
         Object o = valueOperations.get("simpleTestReadMaster:" + key);
+        System.out.println(">>>o:" + o);
         ReadFromCustom.clear();
+
+
+        Object o2 = valueOperations.get("simpleTestReadMaster:" + key);
+        System.out.println(">>>o2:" + o2);
         return "success>>>" + o;
     }
 }
