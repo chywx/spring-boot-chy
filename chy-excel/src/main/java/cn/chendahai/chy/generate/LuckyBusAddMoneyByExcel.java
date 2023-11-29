@@ -13,9 +13,10 @@ public class LuckyBusAddMoneyByExcel {
 
     public static void main(String[] args) {
 
-        String filePath = "C:\\Users\\cob\\Desktop\\文档\\加钱";
+        String filePath = "C:\\Users\\cob\\Downloads\\召回";
 
-        File file = new File(filePath + "\\坦桑用户-2023-11-16.xlsx");
+//        File file = new File(filePath + "\\11月26日四国小游戏vip.xlsx");
+        File file = new File(filePath + "\\肯尼亚流失大户奖励1127.xlsx");
 
 
         String fileName = file.getName();
@@ -28,8 +29,10 @@ public class LuckyBusAddMoneyByExcel {
             // 是excel文件，进行读取操作
             List<LuckyBusUser> userList;
             try {
-                userList = EasyExcel.read(new FileInputStream(file), LuckyBusUser.class, new SyncReadListener())
-                        .sheet(0).doReadSync();
+
+//                userList = EasyExcel.read(new FileInputStream(file), LuckyBusUser.class, new SyncReadListener()).sheet(0).doReadSync();
+                userList = EasyExcel.read(new FileInputStream(file), LuckyBusUser.class, new SyncReadListener()).doReadAllSync();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -40,9 +43,16 @@ public class LuckyBusAddMoneyByExcel {
                 PrintWriter printWriter = new PrintWriter(new FileWriter(filePath + "\\" + writeFileName));
 
                 // 拼接数据
-                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
+//                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
+                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween--\"";
                 for (LuckyBusUser user : userList) {
                     if (user.getUserId() == null) {
+                        continue;
+                    }
+                    if (user.getAddAmount() == null) {
+                        continue;
+                    }
+                    if (user.getAddAmount().equals("0")) {
                         continue;
                     }
                     String content = String.format(curl, user.getUserId(), user.getAddAmount());
