@@ -14,29 +14,6 @@ import java.util.Base64;
 
 public class RSACryptography {
 
-    public static void main(String[] args) throws Exception {
-        String data = "hello world";
-
-        KeyPair keyPair = genKeyPair(512);
-
-        // 获取公钥，并以base64格式打印出来
-        PublicKey publicKey = keyPair.getPublic();
-        System.out.println("公钥：" + Base64.getEncoder().encodeToString(publicKey.getEncoded()));
-
-        // 获取私钥，并以base64格式打印出来
-        PrivateKey privateKey = keyPair.getPrivate();
-        System.out.println("私钥：" + Base64.getEncoder().encodeToString(privateKey.getEncoded()));
-
-
-        String encrypt = ConfigTools.encrypt(Base64.getEncoder().encodeToString(privateKey.getEncoded()), data);
-        System.out.println(encrypt);
-
-        String decrypt = ConfigTools.decrypt(Base64.getEncoder().encodeToString(publicKey.getEncoded()), encrypt);
-        System.out.println(decrypt);
-
-
-    }
-
     @Test
     public void testEncrypt() throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader("D:\\opt\\dbkey\\hw-prod-private-key.txt"));
@@ -75,7 +52,9 @@ public class RSACryptography {
         }
     }
 
-
+    /**
+     * 私钥签名-公钥验签
+     */
     @Test
     public void test1() {
         String data = "kuG8CVzLBJ0F";
@@ -85,6 +64,32 @@ public class RSACryptography {
         boolean verify = verify(data, sign, getPublicKey("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKPwMQ0ZjXYSEMGvm5SiEN4vYgWZz46zq1HppQc8rBMoXj4UB1BSmlcWs7PKxe5tA8awLsckTiu+YEHyIb4tLiMCAwEAAQ=="));
         System.out.println(verify);
     }
+
+    /**
+     * 公钥加密-私钥解密
+     */
+    @Test
+    public void test2() throws Exception {
+        String data = "hello world";
+
+        KeyPair keyPair = genKeyPair(512);
+
+        // 获取公钥，并以base64格式打印出来
+        PublicKey publicKey = keyPair.getPublic();
+        System.out.println("公钥：" + Base64.getEncoder().encodeToString(publicKey.getEncoded()));
+
+        // 获取私钥，并以base64格式打印出来
+        PrivateKey privateKey = keyPair.getPrivate();
+        System.out.println("私钥：" + Base64.getEncoder().encodeToString(privateKey.getEncoded()));
+
+
+        String encrypt = ConfigTools.encrypt(Base64.getEncoder().encodeToString(privateKey.getEncoded()), data);
+        System.out.println(encrypt);
+
+        String decrypt = ConfigTools.decrypt(Base64.getEncoder().encodeToString(publicKey.getEncoded()), encrypt);
+        System.out.println(decrypt);
+    }
+
 
     public static String sign(String data, PrivateKey privateKey) {
         try {
