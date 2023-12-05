@@ -10,8 +10,8 @@ public class LuckyBusUser {
     @ExcelProperty(value= "user_id")
     private Integer userId;
 
-//    @ExcelProperty(value= "username")
-//    private String username;
+    @ExcelProperty(value= "username")
+    private String username;
 
 //    @ExcelProperty(value= "addAmount")
     @ExcelProperty(value= "加钱1%")
