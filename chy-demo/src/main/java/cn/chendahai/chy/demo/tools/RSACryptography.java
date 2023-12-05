@@ -90,6 +90,20 @@ public class RSACryptography {
         System.out.println(decrypt);
     }
 
+    /**
+     * 公钥验签
+     */
+    @Test
+    public void test3(){
+        String data = "{\"token\":\"COhuTyB6raarQzoSHCZPEDWefv4yxdjp8qPKEpdci6F2PtYAUApvPHke6df12cy7lf5HuP7RsI5Iq8NhSWVTGquRGtYR9e5X8Pd7CY5Ihc4rXM0A/Jnrpi/gTCV67C8jv5DW5u3kPXwEpJaCtZ62fo/CY6Jj0v6zcUwLXFiF9e8\",\"game_id\":\"802\",\"request_uuid\":\"FC04873975058125\"}";
+        String sign = "GWCstkTq4ziNVWMVXrRIEmlbM1e/H+TW7QEE0ndRuC+19PrYJ2N9wVehxjoxbKHaJTW5mEoAMNNnA0PNCPhAir7qZUi0PWVIng+hX5rtx+liQaSE5KJRwCVQ5Qfs4CwGvbcp2NAehiQwaWyV1e2ViuqrRaurcDt5iie5gw/4sYA=";
+        boolean verify = verify(data, sign, getPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRiMviVmz6gxU+y29UHVOagikskbQcyMzjsIhGRIONUzWp0WSUBhjSm8q3VryX1hCDwoVWdUbtaftZ1HuNqrEPYCmGWylDD8ed+Rf7w4J8SveUmH77A2yDwNx5xEwrGIofEdUq4ZR0D0DguU0lbQq0c5doDlqmQ+f4rDRQUQyNuQIDAQAB"));
+
+        System.out.println(verify);
+    }
+
+
+
 
     public static String sign(String data, PrivateKey privateKey) {
         try {
