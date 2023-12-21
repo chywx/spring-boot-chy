@@ -1,3 +1,3 @@
-protoc -I=./ --java_out=../../../../../ Token.proto
+protoc -I=./ --java_out=../../../../ Token.proto
 
 pause

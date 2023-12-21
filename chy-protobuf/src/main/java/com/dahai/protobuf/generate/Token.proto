@@ -6,7 +6,7 @@ option java_outer_classname = "Token";
 /**
 用户令牌。info为具体请求信息
  */
-message Token
+message r
 {
   string sign = 1;
   int64 time = 2;
