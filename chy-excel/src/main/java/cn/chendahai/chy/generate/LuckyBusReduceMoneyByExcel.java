@@ -94,5 +94,18 @@ public class LuckyBusReduceMoneyByExcel {
         }
     }
 
+    public static Map<String, Integer> getUsernameMap() {
+        try {
+            Map<String, Integer> map = new HashMap<>();
+            List<LuckyBusUser> list = EasyExcel.read(new FileInputStream("C:\\Users\\cob\\Downloads\\召回\\用户-11-29.xlsx"), LuckyBusUser.class, new SyncReadListener()).doReadAllSync();
+            for (LuckyBusUser user : list) {
+                map.put(user.getUsername(), user.getUserId());
+            }
+            return map;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

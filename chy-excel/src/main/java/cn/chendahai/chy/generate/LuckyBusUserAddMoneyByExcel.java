@@ -1,28 +1,22 @@
 package cn.chendahai.chy.generate;
 
 import cn.chendahai.chy.entity.LuckyBusUser;
-import cn.chendahai.chy.entity.Recall;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.event.SyncReadListener;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
 import java.util.List;
+import java.util.Map;
 
-public class LuckyBusAddMoneyByExcel {
+public class LuckyBusUserAddMoneyByExcel {
 
     public static void main(String[] args) {
 
+        Map<String, Integer> userMap = LuckyBusReduceMoneyByExcel.getUsernameMap();
+
         String filePath = "C:\\Users\\cob\\Downloads\\召回";
 
-//        File file = new File(filePath + "\\11月26日四国小游戏vip.xlsx");
-//        File file = new File(filePath + "\\肯尼亚流失大户奖励1127.xlsx");
-//        File file = new File(filePath + "\\12-04四国小游戏vip.xlsx");
-
-//        File file = new File(filePath + "\\1211四国小游戏vip.xlsx");
-//        File file = new File(filePath + "\\肯尼亚流失大户奖励1211.xlsx");
-
-//        File file = new File(filePath + "\\1218四国小游戏vip.xlsx");
         File file = new File(filePath + "\\肯尼亚流失大户奖励1218.xlsx");
 
 
@@ -53,6 +47,11 @@ public class LuckyBusAddMoneyByExcel {
 //                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
                 String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween--\"";
                 for (LuckyBusUser user : userList) {
+                    Integer userId = userMap.get(user.getUsername());
+                    if (userId == null) {
+                        continue;
+                    }
+                    user.setUserId(userId);
                     if (user.getUserId() == null) {
                         continue;
                     }
