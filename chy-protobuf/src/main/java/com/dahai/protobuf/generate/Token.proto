@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.dahai.protobuf.generate";
+option java_outer_classname = "Token";
+
+/**
+用户令牌。info为具体请求信息
+ */
+message r
+{
+  string sign = 1;
+  int64 time = 2;
+  bytes info = 3;
+}
