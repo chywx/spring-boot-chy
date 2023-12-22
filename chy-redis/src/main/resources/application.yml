@@ -27,6 +27,10 @@ spring:
         min-idle: 8   # 连接池中的最小空闲连接
     # 单机redis
     host: 192.16.8.76
+    port: 6379
+
+
+
 logging:
   level:
     root: info
