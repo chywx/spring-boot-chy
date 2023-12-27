@@ -1,9 +1,6 @@
 package cn.chendahai.chy.mq.enums;
 
-import cn.chendahai.chy.mq.listener.Demo1Listener;
-import cn.chendahai.chy.mq.listener.Demo2Listener;
-import cn.chendahai.chy.mq.listener.Demo3Listener;
-import cn.chendahai.chy.mq.listener.Poker1Listener;
+import cn.chendahai.chy.mq.listener.*;
 import org.apache.rocketmq.client.consumer.listener.MessageListener;
 
 /**
@@ -18,6 +15,14 @@ public enum MQGroup {
     DEMO3("demo3", "topic-demo3", "producer-demo3", "consumer-demo3", new Demo3Listener()),
 
     POKER1("poker1", "topic-poker1", "producer-poker1", "consumer-poker1", new Poker1Listener()),
+
+    /*
+    测试不同的消费者组消费相同的topic
+     */
+    USER_GAME_LOG_1("USER_GAME_LOG_1", "topic-user-game-log", "producer-user-game-log-1", "consumer-user-game-log-1", new UserGameLog1Listener()),
+    USER_GAME_LOG_2("USER_GAME_LOG_1", "topic-user-game-log", "producer-user-game-log-2", "consumer-user-game-log-2", new UserGameLog2Listener()),
+
+
     ;
 
     public static MQGroup getByProducerName(String producerName) {
