@@ -1,4 +1,4 @@
-package cn.chendahai.chy.test.lambda;
+package cn.chendahai.chy.demo.lambda;
 
 import java.util.Comparator;
 import java.util.Objects;
