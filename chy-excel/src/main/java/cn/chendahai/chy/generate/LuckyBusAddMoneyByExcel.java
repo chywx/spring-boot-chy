@@ -23,7 +23,13 @@ public class LuckyBusAddMoneyByExcel {
 //        File file = new File(filePath + "\\肯尼亚流失大户奖励1211.xlsx");
 
 //        File file = new File(filePath + "\\1218四国小游戏vip.xlsx");
-        File file = new File(filePath + "\\肯尼亚流失大户奖励1218.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励1218.xlsx");
+
+//        File file = new File(filePath + "\\1224四国小游戏vip.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励1224.xlsx");
+
+//        File file = new File(filePath + "\\1225-1231四国小游戏vip.xlsx");
+        File file = new File(filePath + "\\肯尼亚流失大户奖励1225-1231.xlsx");
 
 
         String fileName = file.getName();
@@ -51,7 +57,7 @@ public class LuckyBusAddMoneyByExcel {
 
                 // 拼接数据
 //                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
-                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween--\"";
+                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween-\"";
                 for (LuckyBusUser user : userList) {
                     if (user.getUserId() == null) {
                         continue;

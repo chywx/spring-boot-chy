@@ -45,7 +45,7 @@ public class LuckyBusUserAddMoneyByExcel {
 
                 // 拼接数据
 //                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
-                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween--\"";
+                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-halloween-\"";
                 for (LuckyBusUser user : userList) {
                     Integer userId = userMap.get(user.getUsername());
                     if (userId == null) {
