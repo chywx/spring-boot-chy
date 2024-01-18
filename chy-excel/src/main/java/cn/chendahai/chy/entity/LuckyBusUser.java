@@ -14,7 +14,7 @@ public class LuckyBusUser {
     private String username;
 
 //    @ExcelProperty(value= "addAmount")
-    @ExcelProperty(value= "1%加钱")
+    @ExcelProperty(value= "加钱")
     private String addAmount;
 
 }

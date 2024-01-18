@@ -1,4 +1,4 @@
-package cn.chendahai.chy.generate;
+package cn.chendahai.chy.generate.third;
 
 import java.io.File;
 

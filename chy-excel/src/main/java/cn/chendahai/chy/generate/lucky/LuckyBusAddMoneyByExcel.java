@@ -1,4 +1,4 @@
-package cn.chendahai.chy.generate;
+package cn.chendahai.chy.generate.lucky;
 
 import cn.chendahai.chy.entity.LuckyBusUser;
 import cn.chendahai.chy.entity.Recall;
@@ -29,7 +29,11 @@ public class LuckyBusAddMoneyByExcel {
 //        File file = new File(filePath + "\\肯尼亚流失大户奖励1224.xlsx");
 
 //        File file = new File(filePath + "\\1225-1231四国小游戏vip.xlsx");
-        File file = new File(filePath + "\\肯尼亚流失大户奖励1225-1231.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励1225-1231.xlsx");
+
+
+        File file = new File(filePath + "\\01-07四国小游戏vip.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励0101-0107 3.xlsx");
 
 
         String fileName = file.getName();

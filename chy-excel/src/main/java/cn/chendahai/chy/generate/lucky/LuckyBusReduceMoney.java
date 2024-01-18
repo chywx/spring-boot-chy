@@ -1,4 +1,4 @@
-package cn.chendahai.chy.generate;
+package cn.chendahai.chy.generate.lucky;
 
 import cn.chendahai.chy.entity.RecallError;
 import com.alibaba.excel.EasyExcel;
