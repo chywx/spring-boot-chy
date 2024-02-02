@@ -21,6 +21,7 @@
 <!--        <module>chy-redis</module>-->
         <module>chy-test</module>
         <module>chy-demo</module>
+        <module>chy-request</module>
         <module>chy-oss</module>
         <module>chy-excel</module>
         <module>chy-i18n</module>

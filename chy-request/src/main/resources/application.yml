@@ -1,0 +1,7 @@
+server:
+  port: 8184
+
+
+spring:
+  application:
+    name: chy-request
