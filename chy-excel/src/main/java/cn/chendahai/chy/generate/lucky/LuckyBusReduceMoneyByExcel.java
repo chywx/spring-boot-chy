@@ -22,7 +22,8 @@ public class LuckyBusReduceMoneyByExcel {
         String filePath = "C:\\Users\\cob\\Downloads\\召回";
 
 //        File file = new File(filePath + "\\11月26日四国小游戏vip.xlsx");
-        File file = new File(filePath + "\\肯尼亚流失大户奖励1127.xlsx");
+//        File file = new File(filePath + "\\坦桑转盘抽奖.xlsx");
+        File file = new File(filePath + "\\坦桑提现-异常订单-待审核-2024-01-26.xlsx");
 
 
         String fileName = file.getName();
@@ -52,9 +53,9 @@ public class LuckyBusReduceMoneyByExcel {
 //                String curl = "curl \"localhost:7081/inner/center/addChipById?ids=%s&amount=%s&inOrder=1&payType=system&comment=operation&gameNamePrefix=activity-innerAddChip-\"";
                 String curl = "curl 'localhost:7081/inner/center/subChip?username=%s&amount=%s&comment=recall&password=4d681796-64a5-4f10-9617-9459a163ddf1-aefoj9x'";
                 for (LuckyBusUser user : userList) {
-                    if (user.getUserId() == null) {
-                        continue;
-                    }
+//                    if (user.getUserId() == null) {
+//                        continue;
+//                    }
                     if (user.getAddAmount() == null) {
                         continue;
                     }
@@ -62,7 +63,8 @@ public class LuckyBusReduceMoneyByExcel {
                         continue;
                     }
 //                    userIdSet.add(user.getUserId() + "");
-                    String content = String.format(curl, userMap.get(user.getUserId()), user.getAddAmount());
+                    String content = String.format(curl, user.getUsername(), user.getAddAmount());
+//                    String content = String.format(curl, userMap.get(user.getUserId()), user.getAddAmount());
                     System.out.println(fileName + "\t" + JSONObject.toJSONString(user) + "\t" + content);
 //                    System.out.println(String.format(curl, user.getUserId(), user.getAddAmount()));
                     printWriter.println(content);

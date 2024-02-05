@@ -36,7 +36,15 @@ public class LuckyBusAddMoneyByExcel {
 //        File file = new File(filePath + "\\肯尼亚流失大户奖励0101-0107 3.xlsx");
 
 //        File file = new File(filePath + "\\0108-0114四国小游戏vip.xlsx");
-        File file = new File(filePath + "\\肯尼亚流失大户奖励0108-0114.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励0108-0114.xlsx");
+
+
+//        File file = new File(filePath + "\\0115-0121四国小游戏vip.xlsx");
+//        File file = new File(filePath + "\\肯尼亚流失大户奖励0115-0121.xlsx");
+
+
+//        File file = new File(filePath + "\\0122-0128四国小游戏vip.xlsx");
+        File file = new File(filePath + "\\肯尼亚流失大户奖励0122-0128.xlsx");
 
 
         String fileName = file.getName();
