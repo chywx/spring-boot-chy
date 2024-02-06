@@ -1,0 +1,7 @@
+server:
+  port: 8738
+
+
+spring:
+  application:
+    name: chy-notice

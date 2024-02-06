@@ -20,6 +20,7 @@
         <module>chy-socketio</module>
 <!--        <module>chy-redis</module>-->
         <module>chy-test</module>
+        <module>chy-notice</module>
         <module>chy-demo</module>
         <module>chy-request</module>
         <module>chy-oss</module>
