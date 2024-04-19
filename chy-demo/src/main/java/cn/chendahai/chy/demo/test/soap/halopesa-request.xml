@@ -1,0 +1,22 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:ws="http://ws.merchant.vmoney.viettel.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ws:HaloPesaServiceAPI>
+            <request>
+                <requestid>AX154329405</requestid>
+                <username>xxx</username>
+                <password>xxx</password>
+                <request_time>20180601092349</request_time>
+                <amount>1000</amount>
+                <sender_msisdn>255623333666</sender_msisdn>
+                <beneficiary_accountid>100006</beneficiary_accountid>
+                <referenceid>AX154329405</referenceid>
+                <business_no/>
+                <function_code>ASYNC_PAYMENT_USSD_PUSH</function_code>
+                <addition_data/>
+                <check_sum>b875460229adc88cef4bd9904b0b06ba4b2cb4</check_sum>
+            </request>
+        </ws:HaloPesaServiceAPI>
+    </soapenv:Body>
+</soapenv:Envelope>
