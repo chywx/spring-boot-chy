@@ -66,7 +66,8 @@ public class DemoController {
 //    public String testForm(@RequestParam Map<String, Object> params) {
 //    public String testForm(Map<String, Object> params) { // 获取不到
 //    public String testForm(com.alibaba.fastjson.JSONObject params) {
-    public String testForm(@RequestBody BGaming params) {
+//    public String testForm(@RequestBody BGaming params) {
+    public String testForm(@RequestBody String params) {
         logger.info("params: {}", params);
         System.out.println(params);
         return "testform \t" + LocalDateTime.now();
