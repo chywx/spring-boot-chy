@@ -1,14 +1,15 @@
 package cn.chendahai.chy.demo.controller;
 
 import cn.chendahai.chy.demo.config.TestConfig;
-import lombok.Data;
-import lombok.ToString;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -73,10 +74,4 @@ public class DemoController {
         return "testform \t" + LocalDateTime.now();
     }
 
-}
-
-@Data
-class BGaming {
-    private String k1;
-    private String k2;
 }
