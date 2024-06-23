@@ -29,6 +29,7 @@
         <module>chy-s3</module>
         <module>chy-jenkins</module>
         <module>chy-smpp</module>
+        <module>chy-juejin</module>
     </modules>
 
     <name>spring-boot-chy</name>
