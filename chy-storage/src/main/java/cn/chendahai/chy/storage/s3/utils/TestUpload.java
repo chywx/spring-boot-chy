@@ -1,4 +1,4 @@
-package cn.chendahai.chy.s3.utils;
+package cn.chendahai.chy.storage.s3.utils;
 
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;

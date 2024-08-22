@@ -1,13 +1,13 @@
-package cn.chendahai.chy;
+package cn.chendahai.chy.storage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootS3Application {
+public class SpringBootStorageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootS3Application.class, args);
+        SpringApplication.run(SpringBootStorageApplication.class, args);
     }
 
 }

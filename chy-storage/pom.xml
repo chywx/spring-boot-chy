@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>cn.chendahai</groupId>
-    <artifactId>chy-s3</artifactId>
+    <artifactId>chy-storage</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

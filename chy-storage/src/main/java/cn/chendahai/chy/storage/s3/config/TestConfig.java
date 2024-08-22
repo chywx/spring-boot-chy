@@ -1,4 +1,4 @@
-package cn.chendahai.chy.s3.config;
+package cn.chendahai.chy.storage.s3.config;
 
 /**
  * @Description

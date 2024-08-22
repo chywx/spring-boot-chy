@@ -26,7 +26,7 @@
         <module>chy-oss</module>
         <module>chy-excel</module>
         <module>chy-i18n</module>
-        <module>chy-s3</module>
+        <module>chy-storage</module>
         <module>chy-jenkins</module>
         <module>chy-smpp</module>
         <module>chy-juejin</module>
