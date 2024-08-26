@@ -1,7 +1,9 @@
 package cn.chendahai.chy.demo;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.util.ListUtils;
+import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder;
 import com.alibaba.excel.write.style.column.SimpleColumnWidthStyleStrategy;
 import org.junit.Test;
 
@@ -24,6 +26,18 @@ public class WriteDemo {
                 .head(head())
                 .registerWriteHandler(new SimpleColumnWidthStyleStrategy(20))
                 .sheet("模板").doWrite(new ArrayList<>());
+    }
+
+    @Test
+    public void noModelWriteSheets() {
+        // 写法1
+        String fileName = "C:\\Users\\cob\\Desktop\\召回\\" + "noModelWriteSheets" + System.currentTimeMillis() + ".xlsx";
+        // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
+//        EasyExcel.write(fileName).head(head()).sheet("模板").doWrite(dataList());
+        ExcelWriter writer = EasyExcel.write(fileName).build();
+        writer.write(new ArrayList<>(), new ExcelWriterSheetBuilder().sheetNo(0).sheetName("游戏3类注册未转化").head(head()).build());
+        writer.write(new ArrayList<>(), new ExcelWriterSheetBuilder().sheetNo(1).sheetName("游戏3类注册未转化1").head(head()).build());
+        writer.finish();
     }
 
     private List<List<String>> head() {

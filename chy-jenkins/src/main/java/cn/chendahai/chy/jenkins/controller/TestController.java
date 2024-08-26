@@ -36,8 +36,8 @@ public class TestController {
      */
     public static void main(String[] args) {
         JenkinsClient client = JenkinsClient.builder()
-                .endPoint("https://jenkins.gbank.team") // Optional. Defaults to http://127.0.0.1:8080
-                .credentials("chenhaiyang:***") // Optional.
+                .endPoint("http://192.16.10.102:8080") // Optional. Defaults to http://127.0.0.1:8080
+                .credentials("admin:117bf30add5593bb81a646ce0b642a3b66") // Optional.
                 .build();
 
         SystemInfo systemInfo = client.api().systemApi().systemInfo();
@@ -45,7 +45,7 @@ public class TestController {
 
         JobsApi jobsApi = client.api().jobsApi();
 
-        String jobName = "casino-gaming.bonus";
+        String jobName = "release-winsrush-gaming.bonus";
 
         // 获取job信息
         JobInfo jobInfo = jobsApi.jobInfo(null, jobName);
@@ -54,10 +54,10 @@ public class TestController {
 
         // 参数化构建
         Map<String, List<String>> param = new HashMap<>();
-        param.put("branch", Collections.singletonList("shenzhen/dev"));
-        param.put("environment", Collections.singletonList("test-bjhw"));
-//        IntegerResponse integerResponse = jobsApi.buildWithParameters(null, jobName, param);
-//        System.out.println("buildWithParameters integerResponse:" + integerResponse);
+        param.put("branch", Collections.singletonList("master"));
+        param.put("environment", Collections.singletonList("prod"));
+        IntegerResponse integerResponse = jobsApi.buildWithParameters(null, jobName, param);
+        System.out.println("buildWithParameters integerResponse:" + integerResponse);
 
 
         // 最后构建的序号
@@ -71,8 +71,8 @@ public class TestController {
          * 获取指定的序号的控制台输出，不指定默认是最新的
          */
 //        ProgressiveText progressiveText = jobsApi.progressiveText(null, "chy-test-other", 0);
-        ProgressiveText progressiveText = jobsApi.progressiveText(null, jobName, 2, 0);
-        log.info("progressText:" + progressiveText);
+//        ProgressiveText progressiveText = jobsApi.progressiveText(null, jobName, 2, 0);
+//        log.info("progressText:" + progressiveText);
 
 
         /**

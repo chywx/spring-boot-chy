@@ -19,4 +19,8 @@ public class Recall {
     @ExcelProperty(value= "返利金额")
     private String gameAmount;
 
+    public static void main(String[] args) {
+        System.out.println("SG54N0N9WW".length());
+    }
+
 }
